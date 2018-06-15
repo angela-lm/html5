@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>requestAnimationFrame</title>
+    <style>
+        .rect{
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+        <div class="rect"></div>
+</body>
+<script>
+    window.requestAnimationFrame = (function(){
+        return window.requestAnimationFrame ||
+               window.mozRequestAnimationFrame ||
+               window.webkitRequestAnimationFrame || 
+               function(callBack){
+                   window.setTimeout(callBack,1000 / 60);
+               }
+    })();
+    window.cancelAnimationFrame = (function(){
+        return window.cancelAnimationFrame ||
+               window.webkitCancelAnimationFrame ||
+               window.mozCancelAnimationFrame ||
+               function (id){
+                   window.clearTimeout(id);
+               }
+    })();
+    var rect = document.getElementsByClassName('rect')[0];
+    var key;
+    function move(){
+        rect.style.left = rect.offsetLeft + 18 + 'px';
+        if(rect.offsetLeft >= 300){
+            rect.style.left = '300px';
+            cancelAnimationFrame(key);
+        }else{
+            key = requestAnimationFrame(function(){
+                move();
+            })
+
+        }
+    }
+    move();
+</script>
+</html>

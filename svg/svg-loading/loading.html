@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>loading</title>
+    <style>
+        svg{
+            border: 1px solid #ccc;
+        }
+        circle{
+            stroke: orange;
+            stroke-width: 5px;
+            stroke-opacity: 0.5;
+            fill: transparent;
+        }
+        .move{
+            transform-origin: center;
+            stroke: orange;
+            stroke-width: 5px;
+            fill: transparent;
+            stroke-dasharray: 10px 20px;
+            stroke-linecap: round;
+            animation: loading 2s linear forwards infinite;            
+        }
+        @keyframes loading {
+            0%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width=50 height=50>
+        <circle r=20 cx=25 cy=25></circle>
+        <circle r=20 cx=25 cy=25 class="move"></circle>
+    </svg>
+</body>
+</html>

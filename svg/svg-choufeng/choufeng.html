@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>choufeng</title>
+</head>
+<style>
+    svg{
+        border: 1px solid #ccc;
+    }
+    line{
+        stroke: red;
+        stroke-width: 10px;
+        stroke-dasharray: 500px;
+        /* stroke-dashoffset: 500px; */
+        animation: choufeng 1s linear alternate infinite;
+    }
+    @keyframes choufeng {
+        0%{
+            stroke-dashoffset: 500px;
+        }
+        100%{
+            stroke-dashoffset: 0;
+        }
+    }
+</style>
+<body>
+    <svg width=500 height=20>
+        <line x1=0 y1=10 x2=500 y2=10></line>
+    </svg>
+</body>
+</html>

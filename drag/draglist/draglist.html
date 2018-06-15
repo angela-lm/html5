@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>draglist</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .wrapper{
+        margin: 0 auto;
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+    .wrapper ul{
+        width: 100%;
+    }
+    .wrapper ul li{
+        margin-left: 20px;
+        margin-top: 20px;
+        height: 40px;
+        line-height: 40px;
+        width: 200px;
+        background-color: #ccc;
+    }
+    .wrapper .delete{
+        margin-top: 20px;
+        color: white;
+        background-color:black;
+        width: 400px;
+        height: 100px; 
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul>
+            <li class="list">列表项1</li>
+            <li class="list">列表项2</li>
+            <li class="list">列表项3</li>
+            <li class="list">列表项4</li>
+            <li class="list">列表项5</li>
+        </ul>
+        <div class="delete">拖动删除列表</div>
+    </div>
+</body>
+<script>
+    var del = document.getElementsByClassName('delete')[0],
+        ulList = document.getElementsByTagName('ul')[0],
+        liItem = document.getElementsByClassName('list');
+    function bindEvent(){
+        for(var i = 0;i < liItem.length; i ++){
+            liItem[i].setAttribute('draggable',true);
+            liItem[i].addEventListener('dragstart',function(e){
+                e.target.className = "list drag";
+                e.dataTransfer.setData('data','drag');
+            },false);
+            liItem[i].addEventListener('dragover',function(e){
+                e.preventDefault();
+            },false);
+            liItem[i].addEventListener('drop',function(e){
+                var data = e.dataTransfer.getData('data'),
+                    newItem = document.getElementsByClassName(data)[0];
+                    ulList.insertBefore(newItem,this);
+                    newItem.className = 'list';
+            },false);
+        }
+        del.ondragover = function(e){
+            e.preventDefault();
+        }
+        del.ondrop = function(e){
+            var data = e.dataTransfer.getData('data');
+            var drag = document.getElementsByClassName(data)[0];
+            ulList.removeChild(drag);
+        }
+    }
+    bindEvent();
+</script>
+</html>

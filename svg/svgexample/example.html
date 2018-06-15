@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>svg example</title>
+    <style>
+        /* svg{
+            border: 1px solid #000;
+        } */
+        /* css样式
+        line{
+            stroke: red;
+        }
+        rect{
+            fill:transparent;
+            stroke: green;
+        }
+        circle{
+            fill:orange;
+        }
+        polyline{
+            fill:transparent;
+            stroke:red;
+        }
+        polygon{
+            fill:transparent;
+            stroke:red;
+        }
+        text{
+            fill:transparent;
+            stroke:red;
+        } */
+        svg{
+            display: block;
+            background-color: #eee;
+            margin: 100px auto 0;
+        }
+        rect{
+            fill: transparent;
+            stroke: black;
+        }
+        ellipse{
+            fill:transparent;
+            stroke: black; 
+        }
+        polygon{
+            fill: transparent;
+            stroke: black;
+        }
+        text{
+            fill: transparent;
+            stroke: violet;
+        }
+        path{
+            stroke: red;
+            fill: transparent;
+        }
+    </style>
+</head>
+<body>
+    <svg width=500 height=500>
+        <!-- <line x1=100 y1=200 x2=200 y2=200></line>
+        <rect x=100 y=100 width=100 height=100 rx=20 ry= 40></rect>
+        <circle r=50 cx=100 cy=100></circle>
+        <ellipse rx=50 ry=100 cx=200 cy=200></ellipse> -->
+        <!-- <polyline points="100 200, 300,500,400 200,300,200"></polyline> -->
+        <!-- <polygon points="100 200, 300,500,400 200,300,0"></polygon> -->
+        <!-- <text x=125 y=200>hello world!</text> -->
+        <!-- <polyline points="100 100,140 40,200 100,240 40,280 100,350 40,400 100"></polyline>
+        <rect x=80 y=100 width=340 height=340 rx=20 ry=20></rect>
+        <ellipse rx=25 ry=20 cx=150 cy=200></ellipse>
+        <circle r=10 cx=160 cy=205></circle>
+        <ellipse rx=25 ry=20 cx=350 cy=200></ellipse>
+        <circle r=10 cx=360 cy=205></circle>
+        <polygon points="250 240, 230 280, 270 280"></polygon>
+        <ellipse rx=40 ry=20 cx=250 cy=350></ellipse>
+        <text x=200 y=480>hello world！</text> -->
+        <!-- <path d="M 100 100 l 100 100"></path>
+        <path d="m 100 100 L 200 200"></path> -->
+        <!-- <path d="m 100 100 H 200 V 200"></path>
+        <path d="m 100 100 h 100 v 100"></path>-->
+        <path d="m 100 100 A 40 100 0 0 1 200 300"></path>
+    </svg>
+</body>
+</html>

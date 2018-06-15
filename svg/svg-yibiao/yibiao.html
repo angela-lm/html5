@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仪表盘</title>
+</head>
+<style>
+    .percent{
+        display: block;
+        width: 400px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 36px;
+        color: orange;
+        overflow: hidden;
+        text-align: center;
+    }
+    svg{
+        border: 1px solid #ccc;
+    }
+    path{
+        fill: transparent;
+        stroke-width: 10px;
+        stroke-linecap: round;
+    }
+    .path1{
+        stroke: #ccc;
+    }
+    .path2{
+        stroke: orange;
+        stroke-dasharray: 1000px;
+        stroke-dashoffset: -1000px;
+    }
+    .path2.active{
+        transition: all 0.8s linear;
+    }
+</style>
+<body>
+    <input type="number" class="percent"/>
+    <svg width=400 height=400>
+        <path d="m 140 300 A 100 100 0 1 1 260 300" class="path1"></path>
+        <path d="m 140 300 A 100 100 0 1 1 260 300" class="path2"></path>
+    </svg>
+</body>
+<script>
+    var path2 = document.getElementsByClassName('path2')[0];
+    var oInput = document.getElementsByClassName('percent')[0];
+    var len = path2.getTotalLength();
+    oInput.onblur = function(){
+        var val = this.value;
+        if(val <=100 && val > 0){
+            val = len / 100 * val;
+            path2.style.strokeDasharray = 1000 - val + 'px';
+            path2.classList.add('active');
+        }else{
+            alert('输入有误！');
+        }
+    }
+    oInput.onfocus = function(){
+        path2.style.strokeDasharray = '1000px';
+        path2.classList.remove('active');
+    }
+</script>
+</html>

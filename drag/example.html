@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example</title>
+    <style>
+    .item{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    .item1{
+        width: 100px;
+        height: 100px;
+        background-color: green;
+    }
+    .target{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="item" draggable="true">1</div>
+        <div class="item1" draggable="true">2</div>
+        <div class="target"></div>
+    </div>
+</body>
+<script>
+    var item = document.getElementsByClassName('item')[0];
+    var item1 = document.getElementsByClassName('item1')[0];
+    var target = document.getElementsByClassName('target')[0];
+    item.ondragstart = function (e){
+        e.dataTransfer.setData('data',e.target.className);
+
+    }
+    item.onEragend = function(){
+    }
+    item1.ondragstart = function (e){
+        e.dataTransfer.setData('data',e.target.className);
+    }
+    item1.ondragend = function(){
+    }
+    target.ondragenter = function (){
+    }
+    target.ondragover = function (e){
+        e.preventDefault();
+    }
+    target.ondrop = function(e){
+        var data = e.dataTransfer.getData('data');
+        var newitem = document.getElementsByClassName(data)[0];
+        target.appendChild(newitem);
+    }
+</script>
+</html>
